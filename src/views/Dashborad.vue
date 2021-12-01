@@ -123,5 +123,6 @@ export default {
 }
 .balance.is-active {
   display: block;
+  color: red;
 }
 </style>
