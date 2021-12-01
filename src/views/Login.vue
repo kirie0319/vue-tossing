@@ -11,6 +11,7 @@
     <button @click="login">ログイン</button>
     <br />
     <router-link to="/register">新規登録</router-link>
+    <router-link to="/dashborad">ダッシュボード</router-link>
   </div>
 </template>
 

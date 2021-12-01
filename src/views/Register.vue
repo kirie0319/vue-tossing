@@ -16,6 +16,7 @@
     <button @click="register">新規登録</button>
     <br />
     <router-link to='/login'>ログイン</router-link>
+    <router-link to="/dashborad">ダッシュボード</router-link>
   </div>
 </template>
 
@@ -42,7 +43,14 @@ export default {
           return data.user.updateProfile({
             displayName: this.name,
           }).then(() => {
-            this.$router.replace('/dashborad')
+            const db = firebase.firestore();
+            db.collection("users").add({
+              name: data.user.displayName,
+              uid: data.user.uid,
+              myWallet: 0,
+              email: data.user.email,
+            });
+            this.$router.replace('/dashborad');
           })
         })
         .catch((error) => {
