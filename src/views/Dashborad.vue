@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     editUserWalletButton(id, wallet) {
-      let money = this.wallet + wallet
+      const money = this.wallet + wallet
       this.db.collection("users").doc(id).update({
         myWallet: money
       }).then(() => {
@@ -63,7 +63,7 @@ export default {
         this.userList = [];
         this.db.collection("users").get().then((query) => {
           query.forEach((data) => {
-            let resData = data.data();
+            const resData = data.data();
             if (this.id !== data.id) {
               this.userList.push({
                 id: data.id,
@@ -97,8 +97,8 @@ export default {
       }
     },
     sendMoney(user_id, user, wallet) {
-      let money = this.wallet - wallet
-      let otherWallet = user.wallet + wallet
+      const money = this.wallet - wallet
+      const otherWallet = user.wallet + wallet
       this.db.collection("users").doc(user_id).update({
         myWallet: money
       }).then(() => {
@@ -123,5 +123,6 @@ export default {
 }
 .balance.is-active {
   display: block;
+  color: red;
 }
 </style>
